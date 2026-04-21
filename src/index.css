@@ -4,40 +4,40 @@
 
 @layer base {
   :root {
-    --background: 220 25% 97%;
-    --foreground: 215 35% 12%;
+    --background: 0 0% 98%;
+    --foreground: 0 15% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 35% 12%;
+    --card-foreground: 0 15% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 35% 12%;
+    --popover-foreground: 0 15% 10%;
 
-    --primary: 195 85% 28%;
+    --primary: 0 80% 38%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 30% 92%;
-    --secondary-foreground: 215 35% 12%;
+    --secondary: 0 10% 94%;
+    --secondary-foreground: 0 15% 10%;
 
-    --muted: 210 20% 94%;
-    --muted-foreground: 215 15% 45%;
+    --muted: 0 8% 94%;
+    --muted-foreground: 0 5% 45%;
 
-    --accent: 162 55% 35%;
+    --accent: 0 65% 28%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214 25% 85%;
-    --input: 214 25% 85%;
-    --ring: 195 85% 28%;
+    --border: 0 8% 88%;
+    --input: 0 8% 88%;
+    --ring: 0 80% 38%;
 
     --radius: 0.75rem;
 
-    --navy: 215 45% 14%;
-    --teal: 195 85% 28%;
-    --emerald: 162 55% 35%;
-    --gold: 42 85% 55%;
+    --navy: 0 60% 15%;
+    --teal: 0 78% 36%;
+    --emerald: 0 65% 26%;
+    --gold: 0 0% 96%;
   }
 }
 
@@ -99,9 +99,9 @@
   .hero-gradient {
     background: linear-gradient(
       135deg,
-      hsl(215, 45%, 10%) 0%,
-      hsl(195, 70%, 18%) 50%,
-      hsl(162, 50%, 20%) 100%
+      hsl(0, 72%, 10%) 0%,
+      hsl(0, 75%, 22%) 50%,
+      hsl(0, 60%, 14%) 100%
     );
   }
 

@@ -17,7 +17,7 @@ const directions = [
     id: "abdominal" as Direction,
     name: "Абдоминальная хирургия",
     icon: "Stethoscope",
-    color: "#0e7490",
+    color: "#b91c1c",
     description: "Направление занимается хирургией органов брюшной полости: желудок, кишечник, печень, поджелудочная железа, желчный пузырь. Студенты отрабатывают навыки лапароскопических и открытых операций.",
     operations: ["Аппендэктомия", "Холецистэктомия", "Резекция желудка", "Лапароскопия", "Герниопластика"],
     literature: [
@@ -32,7 +32,7 @@ const directions = [
     id: "thoracic" as Direction,
     name: "Торакальная хирургия",
     icon: "Heart",
-    color: "#0f766e",
+    color: "#991b1b",
     description: "Направление специализируется на операциях органов грудной клетки: лёгкие, плевра, трахея, пищевод. Особый акцент на торакоскопических технологиях.",
     operations: ["Лобэктомия", "Пневмонэктомия", "Торакоскопия", "Операции на пищеводе", "Декортикация лёгкого"],
     literature: [
@@ -46,7 +46,7 @@ const directions = [
     id: "trauma" as Direction,
     name: "Травматология и ортопедия",
     icon: "Bone",
-    color: "#155e75",
+    color: "#7f1d1d",
     description: "Лечение травм опорно-двигательного аппарата, переломов, вывихов. Навыки гипсования, остеосинтеза, артроскопии.",
     operations: ["Остеосинтез", "Эндопротезирование", "Артроскопия", "Реконструкция связок", "Остеотомия"],
     literature: [
@@ -60,7 +60,7 @@ const directions = [
     id: "neuro" as Direction,
     name: "Нейрохирургия",
     icon: "Brain",
-    color: "#1e40af",
+    color: "#c0392b",
     description: "Операции на головном и спинном мозге, периферической нервной системе. Одно из самых сложных и захватывающих направлений хирургии.",
     operations: ["Трепанация черепа", "Удаление опухолей", "Клипирование аневризм", "Ламинэктомия", "Шунтирование"],
     literature: [
@@ -74,7 +74,7 @@ const directions = [
     id: "vascular" as Direction,
     name: "Сосудистая хирургия",
     icon: "Activity",
-    color: "#065f46",
+    color: "#a61c1c",
     description: "Хирургия сосудов: аорта, артерии, вены. Операции по устранению нарушений кровообращения, аневризм, атеросклероза.",
     operations: ["Аортокоронарное шунтирование", "Стентирование", "Эндартерэктомия", "Ангиопластика", "Флебэктомия"],
     literature: [
@@ -178,7 +178,7 @@ export default function Index() {
               </div>
               <div className="hidden sm:block">
                 <div className="text-white font-bold text-sm leading-tight">СХО КрасГМУ</div>
-                <div className="text-blue-300 text-xs">Студенческое хирургическое общество</div>
+                <div className="text-red-200 text-xs">Студенческое хирургическое общество</div>
               </div>
             </div>
             <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto">
@@ -194,7 +194,7 @@ export default function Index() {
                   className={`nav-link flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap ${
                     activeTab === tab.id
                       ? "bg-teal text-white"
-                      : "text-blue-200 hover:text-white hover:bg-white/10"
+                      : "text-red-200 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   <Icon name={tab.icon} size={15} />
@@ -222,7 +222,7 @@ export default function Index() {
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/60" />
             <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-slide-up">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-blue-200 text-sm px-4 py-2 rounded-full mb-6 border border-white/20">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-red-100 text-sm px-4 py-2 rounded-full mb-6 border border-white/20">
                 <Icon name="MapPin" size={14} />
                 Красноярский государственный медицинский университет
               </div>
@@ -231,7 +231,7 @@ export default function Index() {
                 <span className="text-gold italic">хирургическое</span><br />
                 общество
               </h1>
-              <p className="text-blue-200 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+              <p className="text-red-100 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
                 Мы готовим будущих хирургов — через практику, наставничество и соревнования. Присоединяйся к команде, которая меняет медицину.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
@@ -265,7 +265,7 @@ export default function Index() {
                 ].map(stat => (
                   <div key={stat.label}>
                     <div className="text-gold font-bold text-3xl sm:text-4xl font-cormorant">{stat.value}</div>
-                    <div className="text-blue-300 text-sm mt-1">{stat.label}</div>
+                    <div className="text-red-200 text-sm mt-1">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -390,7 +390,7 @@ export default function Index() {
             <h2 className="font-cormorant text-4xl sm:text-5xl text-white mb-4 font-semibold">
               Готов стать <span className="text-gold italic">хирургом?</span>
             </h2>
-            <p className="text-blue-200 mb-8 max-w-xl mx-auto">Подай заявку на отбор и начни свой путь в хирургии вместе с нами</p>
+            <p className="text-red-100 mb-8 max-w-xl mx-auto">Подай заявку на отбор и начни свой путь в хирургии вместе с нами</p>
             <button
               onClick={() => setShowApplication(true)}
               className="bg-gold hover:bg-yellow-400 text-navy font-bold px-10 py-4 rounded-xl text-lg transition-all hover:scale-105 shadow-lg"
@@ -406,7 +406,7 @@ export default function Index() {
         <div className="min-h-screen">
           <div className="hero-gradient py-16 px-4 text-center">
             <h1 className="font-cormorant text-5xl text-white mb-3 font-semibold">Направления</h1>
-            <p className="text-blue-200 text-lg">Выбери специализацию и углубись в хирургию</p>
+            <p className="text-red-200 text-lg">Выбери специализацию и углубись в хирургию</p>
           </div>
 
           <div className="max-w-7xl mx-auto px-4 py-8">
@@ -495,11 +495,11 @@ export default function Index() {
                       {currentDirection.curator.contact}
                     </a>
                     <div className="flex gap-3">
-                      <a href={currentDirection.curator.vk} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 bg-blue-600 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors">
+                      <a href={currentDirection.curator.vk} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 bg-slate-700 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors">
                         <Icon name="Users" size={13} />
                         ВКонтакте
                       </a>
-                      <a href={currentDirection.curator.tg} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 bg-sky-500 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-sky-600 transition-colors">
+                      <a href={currentDirection.curator.tg} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 bg-slate-600 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-slate-700 transition-colors">
                         <Icon name="Send" size={13} />
                         Telegram
                       </a>
@@ -646,7 +646,7 @@ export default function Index() {
         <div className="min-h-screen">
           <div className="hero-gradient py-16 px-4 text-center">
             <h1 className="font-cormorant text-5xl text-white mb-3 font-semibold">История общества</h1>
-            <p className="text-blue-200 text-lg">Более 15 лет хирургического образования</p>
+            <p className="text-red-200 text-lg">Более 15 лет хирургического образования</p>
           </div>
 
           <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
@@ -697,7 +697,7 @@ export default function Index() {
                   <div key={a.label} className="text-center">
                     <Icon name={a.icon} size={32} className="text-gold mx-auto mb-2" />
                     <div className="font-cormorant text-4xl text-gold font-semibold">{a.count}</div>
-                    <p className="text-blue-200 text-sm mt-1">{a.label}</p>
+                    <p className="text-red-200 text-sm mt-1">{a.label}</p>
                   </div>
                 ))}
               </div>
@@ -722,7 +722,7 @@ export default function Index() {
         <div className="min-h-screen">
           <div className="hero-gradient py-16 px-4 text-center">
             <h1 className="font-cormorant text-5xl text-white mb-3 font-semibold">Контакты</h1>
-            <p className="text-blue-200 text-lg">Свяжитесь с нами</p>
+            <p className="text-red-200 text-lg">Свяжитесь с нами</p>
           </div>
 
           <div className="max-w-5xl mx-auto px-4 py-12">
@@ -747,11 +747,11 @@ export default function Index() {
                     </a>
                   </div>
                   <div className="flex gap-3 mt-4">
-                    <a href="https://vk.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    <a href="https://vk.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-slate-700 text-white text-sm px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors">
                       <Icon name="Users" size={16} />
                       ВКонтакте
                     </a>
-                    <a href="https://t.me" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-sky-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-sky-600 transition-colors">
+                    <a href="https://t.me" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-slate-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-slate-700 transition-colors">
                       <Icon name="Send" size={16} />
                       Telegram
                     </a>
@@ -805,10 +805,10 @@ export default function Index() {
                   </h2>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { name: "ВКонтакте", icon: "Users", color: "bg-blue-600", url: "https://vk.com" },
-                      { name: "Telegram", icon: "Send", color: "bg-sky-500", url: "https://t.me" },
-                      { name: "Instagram", icon: "Camera", color: "bg-pink-500", url: "#" },
-                      { name: "YouTube", icon: "Play", color: "bg-red-500", url: "#" },
+                      { name: "ВКонтакте", icon: "Users", color: "bg-slate-700", url: "https://vk.com" },
+                      { name: "Telegram", icon: "Send", color: "bg-slate-600", url: "https://t.me" },
+                      { name: "Instagram", icon: "Camera", color: "bg-rose-700", url: "#" },
+                      { name: "YouTube", icon: "Play", color: "bg-red-800", url: "#" },
                     ].map(s => (
                       <a
                         key={s.name}
@@ -846,12 +846,12 @@ export default function Index() {
             </div>
             <div>
               <div className="text-white font-bold text-sm">СХО КрасГМУ</div>
-              <div className="text-blue-400 text-xs">© 2008 — 2025</div>
+              <div className="text-red-300 text-xs">© 2008 — 2025</div>
             </div>
           </div>
           <div className="flex gap-4">
             {(["home", "directions", "history", "contacts"] as const).map(t => (
-              <button key={t} onClick={() => setActiveTab(t)} className="text-blue-300 hover:text-white text-sm transition-colors">
+              <button key={t} onClick={() => setActiveTab(t)} className="text-red-200 hover:text-white text-sm transition-colors">
                 {{ home: "Главная", directions: "Направления", history: "История", contacts: "Контакты" }[t]}
               </button>
             ))}

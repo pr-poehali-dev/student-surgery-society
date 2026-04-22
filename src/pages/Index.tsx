@@ -9,31 +9,32 @@ const HERO_IMG = "https://cdn.poehali.dev/projects/b346d1c6-edca-404c-bc23-613d9
 const OLYMPIAD_IMG = "https://cdn.poehali.dev/projects/b346d1c6-edca-404c-bc23-613d9f5d598c/files/61f3011b-25f6-4442-8976-38d50b9562ab.jpg";
 const DOCTOR_IMG = "https://cdn.poehali.dev/projects/b346d1c6-edca-404c-bc23-613d9f5d598c/files/3aac0457-4960-47ff-a0b6-61d0d584a04c.jpg";
 
-type Tab = "home" | "directions" | "history" | "contacts";
-type Direction = "abdominal" | "thoracic" | "trauma" | "neuro" | "vascular";
+const API_URL = "https://functions.poehali.dev/ff0bb22c-0f31-4253-85d6-e0955fd74ffc";
+
+type Tab = "home" | "directions" | "history" | "contacts" | "admin";
+type Direction = "ssh" | "thoracic" | "abdominal" | "endovideo" | "plastic" | "trauma" | "gynecology" | "neuro" | "urology" | "air";
 
 const directions = [
   {
-    id: "abdominal" as Direction,
-    name: "Абдоминальная хирургия",
-    icon: "Stethoscope",
+    id: "ssh" as Direction,
+    name: "ССХ",
+    icon: "Heart",
     color: "#b91c1c",
-    description: "Направление занимается хирургией органов брюшной полости: желудок, кишечник, печень, поджелудочная железа, желчный пузырь. Студенты отрабатывают навыки лапароскопических и открытых операций.",
-    operations: ["Аппендэктомия", "Холецистэктомия", "Резекция желудка", "Лапароскопия", "Герниопластика"],
+    description: "Сердечно-сосудистая хирургия — направление, занимающееся операциями на сердце и магистральных сосудах. Студенты осваивают основы кардиохирургии, работу с аппаратом искусственного кровообращения, навыки сосудистого шва.",
+    operations: ["АКШ", "Протезирование клапанов", "Коронарография", "Операции на аорте", "Имплантация ЭКС"],
     literature: [
-      { title: "Хирургические болезни", author: "Кузин М.И.", year: 2022 },
-      { title: "Абдоминальная хирургия", author: "Савельев В.С.", year: 2019 },
-      { title: "Лапароскопическая хирургия", author: "Федоров И.В.", year: 2020 },
+      { title: "Сердечно-сосудистая хирургия", author: "Бураковский В.И.", year: 2019 },
+      { title: "Кардиохирургия", author: "Шевченко Ю.Л.", year: 2020 },
     ],
     curator: { name: "Иванов Сергей Петрович", degree: "к.м.н., доцент", contact: "+7 (391) 221-24-49", vk: "https://vk.com", tg: "https://t.me" },
-    prevCurators: ["Смирнов А.В. (2018–2021)", "Петров К.Д. (2015–2018)"],
+    prevCurators: ["Смирнов А.В. (2019–2022)"],
   },
   {
     id: "thoracic" as Direction,
     name: "Торакальная хирургия",
-    icon: "Heart",
+    icon: "Wind",
     color: "#991b1b",
-    description: "Направление специализируется на операциях органов грудной клетки: лёгкие, плевра, трахея, пищевод. Особый акцент на торакоскопических технологиях.",
+    description: "Направление специализируется на операциях органов грудной клетки: лёгкие, плевра, трахея, пищевод, средостение. Особый акцент на торакоскопических технологиях.",
     operations: ["Лобэктомия", "Пневмонэктомия", "Торакоскопия", "Операции на пищеводе", "Декортикация лёгкого"],
     literature: [
       { title: "Торакальная хирургия", author: "Бисенков Л.Н.", year: 2004 },
@@ -43,46 +44,116 @@ const directions = [
     prevCurators: ["Николаев В.В. (2017–2020)"],
   },
   {
-    id: "trauma" as Direction,
-    name: "Травматология и ортопедия",
-    icon: "Bone",
-    color: "#7f1d1d",
-    description: "Лечение травм опорно-двигательного аппарата, переломов, вывихов. Навыки гипсования, остеосинтеза, артроскопии.",
-    operations: ["Остеосинтез", "Эндопротезирование", "Артроскопия", "Реконструкция связок", "Остеотомия"],
+    id: "abdominal" as Direction,
+    name: "Абдоминальная хирургия",
+    icon: "Stethoscope",
+    color: "#a61c1c",
+    description: "Хирургия органов брюшной полости: желудок, кишечник, печень, поджелудочная железа, желчный пузырь. Студенты отрабатывают навыки лапароскопических и открытых операций.",
+    operations: ["Аппендэктомия", "Холецистэктомия", "Резекция желудка", "Лапароскопия", "Герниопластика"],
     literature: [
-      { title: "Травматология и ортопедия", author: "Корнилов Н.В.", year: 2021 },
-      { title: "Переломы костей", author: "Анкин Л.Н.", year: 2019 },
+      { title: "Хирургические болезни", author: "Кузин М.И.", year: 2022 },
+      { title: "Абдоминальная хирургия", author: "Савельев В.С.", year: 2019 },
     ],
     curator: { name: "Дроздов Алексей Игоревич", degree: "к.м.н., ассистент", contact: "+7 (391) 221-24-51", vk: "https://vk.com", tg: "https://t.me" },
-    prevCurators: ["Лебедев М.С. (2016–2019)", "Орлов Д.А. (2013–2016)"],
+    prevCurators: ["Петров К.Д. (2016–2019)"],
   },
   {
-    id: "neuro" as Direction,
-    name: "Нейрохирургия",
-    icon: "Brain",
-    color: "#c0392b",
-    description: "Операции на головном и спинном мозге, периферической нервной системе. Одно из самых сложных и захватывающих направлений хирургии.",
-    operations: ["Трепанация черепа", "Удаление опухолей", "Клипирование аневризм", "Ламинэктомия", "Шунтирование"],
+    id: "endovideo" as Direction,
+    name: "Эндовидеохирургия",
+    icon: "Video",
+    color: "#7f1d1d",
+    description: "Направление охватывает все аспекты минимально инвазивной хирургии с использованием видеосистем: лапароскопия, торакоскопия, роботические технологии. Студенты тренируются на симуляторах и тренажёрах.",
+    operations: ["Лапароскопия", "Торакоскопия", "Роботическая хирургия", "Гистероскопия", "Артроскопия"],
     literature: [
-      { title: "Нейрохирургия", author: "Гайдар Б.В.", year: 2020 },
-      { title: "Клиническая нейрохирургия", author: "Зозуля Ю.А.", year: 2018 },
+      { title: "Лапароскопическая хирургия", author: "Федоров И.В.", year: 2020 },
+      { title: "Эндовидеохирургия", author: "Емельянов С.И.", year: 2018 },
+    ],
+    curator: { name: "Громов Виктор Николаевич", degree: "к.м.н., доцент", contact: "+7 (391) 221-24-53", vk: "https://vk.com", tg: "https://t.me" },
+    prevCurators: ["Сидоров И.Л. (2018–2021)"],
+  },
+  {
+    id: "plastic" as Direction,
+    name: "Пластическая хирургия",
+    icon: "Sparkles",
+    color: "#c0392b",
+    description: "Реконструктивная и эстетическая хирургия. Направление изучает принципы пересадки тканей, кожно-пластических операций, работу с микрохирургической техникой.",
+    operations: ["Кожная пластика", "Ринопластика", "Маммопластика", "Липосакция", "Реконструктивные операции"],
+    literature: [
+      { title: "Пластическая хирургия", author: "Белоусов А.Е.", year: 2021 },
+      { title: "Реконструктивная микрохирургия", author: "Миланов Н.О.", year: 2017 },
     ],
     curator: { name: "Волкова Наталья Сергеевна", degree: "д.м.н., профессор", contact: "+7 (391) 221-24-52", vk: "https://vk.com", tg: "https://t.me" },
     prevCurators: ["Зайцев П.К. (2019–2022)"],
   },
   {
-    id: "vascular" as Direction,
-    name: "Сосудистая хирургия",
-    icon: "Activity",
-    color: "#a61c1c",
-    description: "Хирургия сосудов: аорта, артерии, вены. Операции по устранению нарушений кровообращения, аневризм, атеросклероза.",
-    operations: ["Аортокоронарное шунтирование", "Стентирование", "Эндартерэктомия", "Ангиопластика", "Флебэктомия"],
+    id: "trauma" as Direction,
+    name: "Травматология и ортопедия",
+    icon: "Bone",
+    color: "#b91c1c",
+    description: "Лечение травм опорно-двигательного аппарата, переломов, вывихов. Навыки гипсования, остеосинтеза, артроскопии и эндопротезирования суставов.",
+    operations: ["Остеосинтез", "Эндопротезирование", "Артроскопия", "Реконструкция связок", "Остеотомия"],
     literature: [
-      { title: "Сосудистая хирургия", author: "Покровский А.В.", year: 2021 },
-      { title: "Ангиология и сосудистая хирургия", author: "Сигаев И.Ю.", year: 2017 },
+      { title: "Травматология и ортопедия", author: "Корнилов Н.В.", year: 2021 },
+      { title: "Переломы костей", author: "Анкин Л.Н.", year: 2019 },
     ],
-    curator: { name: "Громов Виктор Николаевич", degree: "к.м.н., доцент", contact: "+7 (391) 221-24-53", vk: "https://vk.com", tg: "https://t.me" },
-    prevCurators: ["Сидоров И.Л. (2018–2021)"],
+    curator: { name: "Лобанов Кирилл Денисович", degree: "ординатор, куратор", contact: "+7 (391) 221-24-54", vk: "https://vk.com", tg: "https://t.me" },
+    prevCurators: ["Лебедев М.С. (2016–2019)"],
+  },
+  {
+    id: "gynecology" as Direction,
+    name: "Гинекология",
+    icon: "User",
+    color: "#991b1b",
+    description: "Оперативная гинекология — хирургические вмешательства на органах малого таза у женщин. Включает лапароскопические и открытые операции, навыки работы с гистероскопом.",
+    operations: ["Лапароскопия", "Миомэктомия", "Гистерэктомия", "Кистэктомия", "Гистероскопия"],
+    literature: [
+      { title: "Оперативная гинекология", author: "Стрижаков А.Н.", year: 2020 },
+      { title: "Эндоскопия в гинекологии", author: "Кулаков В.И.", year: 2018 },
+    ],
+    curator: { name: "Туркина Полина Игоревна", degree: "студент 5 курс", contact: "+7 (391) 221-24-55", vk: "https://vk.com", tg: "https://t.me" },
+    prevCurators: ["Орлова Д.А. (2018–2021)"],
+  },
+  {
+    id: "neuro" as Direction,
+    name: "Нейрохирургия",
+    icon: "Brain",
+    color: "#7f1d1d",
+    description: "Операции на головном и спинном мозге, периферической нервной системе. Одно из самых технически сложных и захватывающих направлений хирургии.",
+    operations: ["Трепанация черепа", "Удаление опухолей", "Клипирование аневризм", "Ламинэктомия", "Шунтирование"],
+    literature: [
+      { title: "Нейрохирургия", author: "Гайдар Б.В.", year: 2020 },
+      { title: "Клиническая нейрохирургия", author: "Зозуля Ю.А.", year: 2018 },
+    ],
+    curator: { name: "Соколова Анна Вячеславовна", degree: "студент 5 курс", contact: "+7 (391) 221-24-56", vk: "https://vk.com", tg: "https://t.me" },
+    prevCurators: ["Зайцев П.К. (2019–2022)"],
+  },
+  {
+    id: "urology" as Direction,
+    name: "Урология",
+    icon: "Droplets",
+    color: "#a61c1c",
+    description: "Хирургия органов мочеполовой системы. Включает эндоскопические, лапароскопические и открытые операции на почках, мочевом пузыре, предстательной железе.",
+    operations: ["Нефрэктомия", "ТУР простаты", "Уретероскопия", "Цистоскопия", "Пиелопластика"],
+    literature: [
+      { title: "Урология", author: "Лопаткин Н.А.", year: 2021 },
+      { title: "Оперативная урология", author: "Матвеев Б.П.", year: 2019 },
+    ],
+    curator: { name: "Морозов Иван Сергеевич", degree: "студент 4 курс", contact: "+7 (391) 221-24-57", vk: "https://vk.com", tg: "https://t.me" },
+    prevCurators: ["Васин Д.Р. (2019–2022)"],
+  },
+  {
+    id: "air" as Direction,
+    name: "АИР",
+    icon: "Activity",
+    color: "#c0392b",
+    description: "Анестезиология, интенсивная терапия и реанимация — направление, обеспечивающее безопасность пациента во время операции и в критических состояниях. Студенты осваивают методы обезболивания, ИВЛ, мониторинга.",
+    operations: ["Интубация трахеи", "ИВЛ", "Спинальная анестезия", "Эпидуральная анестезия", "Центральный венозный доступ"],
+    literature: [
+      { title: "Анестезиология и реаниматология", author: "Зильбер А.П.", year: 2020 },
+      { title: "Интенсивная терапия", author: "Мартынов А.И.", year: 2019 },
+    ],
+    curator: { name: "Захарова Елена Витальевна", degree: "студент 4 курс", contact: "+7 (391) 221-24-58", vk: "https://vk.com", tg: "https://t.me" },
+    prevCurators: ["Новиков В.С. (2018–2021)"],
   },
 ];
 
@@ -146,24 +217,69 @@ const evaluationCriteria = [
   { criterion: "Теоретические вопросы", max: 10, desc: "Ответы на вопросы комиссии по анатомии и технике" },
 ];
 
+type Application = {
+  id: number; name: string; year: string; phone: string; email: string;
+  direction: string; motivation: string; status: string; created_at: string;
+};
+
 export default function Index() {
   const [activeTab, setActiveTab] = useState<Tab>("home");
-  const [activeDirection, setActiveDirection] = useState<Direction>("abdominal");
+  const [activeDirection, setActiveDirection] = useState<Direction>("ssh");
   const [directionTab, setDirectionTab] = useState<"info" | "selection">("info");
   const [showApplication, setShowApplication] = useState(false);
   const [formData, setFormData] = useState({ name: "", year: "", phone: "", email: "", direction: "", motivation: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  // Admin
+  const [adminKey, setAdminKey] = useState("");
+  const [adminInput, setAdminInput] = useState("");
+  const [adminApps, setAdminApps] = useState<Application[]>([]);
+  const [adminLoading, setAdminLoading] = useState(false);
+  const [adminError, setAdminError] = useState("");
 
   const currentDirection = directions.find(d => d.id === activeDirection)!;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setShowApplication(false);
-      setSubmitted(false);
-      setFormData({ name: "", year: "", phone: "", email: "", direction: "", motivation: "" });
-    }, 2500);
+    setSubmitting(true);
+    setSubmitError("");
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Ошибка отправки");
+      setSubmitted(true);
+      setTimeout(() => {
+        setShowApplication(false);
+        setSubmitted(false);
+        setFormData({ name: "", year: "", phone: "", email: "", direction: "", motivation: "" });
+      }, 3000);
+    } catch (err: unknown) {
+      setSubmitError(err instanceof Error ? err.message : "Ошибка соединения");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleAdminLogin = async () => {
+    setAdminLoading(true);
+    setAdminError("");
+    try {
+      const res = await fetch(`${API_URL}?admin=${encodeURIComponent(adminInput)}`);
+      if (res.status === 403) { setAdminError("Неверный пароль"); setAdminLoading(false); return; }
+      const data = await res.json();
+      setAdminApps(data.applications || []);
+      setAdminKey(adminInput);
+    } catch {
+      setAdminError("Ошибка соединения");
+    } finally {
+      setAdminLoading(false);
+    }
   };
 
   return (
@@ -187,6 +303,7 @@ export default function Index() {
                 { id: "directions", label: "Направления", icon: "Layers" },
                 { id: "history", label: "История", icon: "BookOpen" },
                 { id: "contacts", label: "Контакты", icon: "Phone" },
+                { id: "admin", label: "Заявки", icon: "ClipboardList" },
               ] as const).map(tab => (
                 <button
                   key={tab.id}
@@ -837,6 +954,104 @@ export default function Index() {
         </div>
       )}
 
+      {/* ========== ADMIN ========== */}
+      {activeTab === "admin" && (
+        <div className="min-h-screen">
+          <div className="hero-gradient py-16 px-4 text-center">
+            <h1 className="font-cormorant text-5xl text-white mb-3 font-semibold">Заявки на отбор</h1>
+            <p className="text-red-200 text-lg">Только для администраторов СХО</p>
+          </div>
+          <div className="max-w-5xl mx-auto px-4 py-12">
+            {!adminKey ? (
+              <div className="max-w-sm mx-auto bg-white rounded-2xl p-8 shadow-sm border border-slate-100 text-center">
+                <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Lock" size={24} className="text-teal" />
+                </div>
+                <h2 className="font-semibold text-navy text-lg mb-1">Вход для администратора</h2>
+                <p className="text-muted-foreground text-sm mb-5">Введите пароль для просмотра заявок</p>
+                <Input
+                  type="password"
+                  value={adminInput}
+                  onChange={e => setAdminInput(e.target.value)}
+                  placeholder="Пароль"
+                  className="mb-3"
+                  onKeyDown={e => e.key === "Enter" && handleAdminLogin()}
+                />
+                {adminError && <p className="text-red-600 text-sm mb-3">{adminError}</p>}
+                <button
+                  onClick={handleAdminLogin}
+                  disabled={adminLoading}
+                  className="w-full bg-teal text-white font-semibold py-2.5 rounded-lg hover:bg-red-700 transition-all disabled:opacity-60"
+                >
+                  {adminLoading ? "Загрузка..." : "Войти"}
+                </button>
+              </div>
+            ) : (
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="font-semibold text-navy text-xl">Всего заявок: {adminApps.length}</h2>
+                    <p className="text-muted-foreground text-sm">Новые заявки на вступление в СХО</p>
+                  </div>
+                  <button
+                    onClick={() => { setAdminKey(""); setAdminInput(""); setAdminApps([]); }}
+                    className="text-sm text-slate-500 hover:text-navy flex items-center gap-1"
+                  >
+                    <Icon name="LogOut" size={15} />
+                    Выйти
+                  </button>
+                </div>
+                {adminApps.length === 0 ? (
+                  <div className="text-center py-16 text-muted-foreground">
+                    <Icon name="Inbox" size={40} className="mx-auto mb-3 opacity-30" />
+                    <p>Заявок пока нет</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {adminApps.map(app => (
+                      <div key={app.id} className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                        <div className="flex items-start justify-between gap-4 flex-wrap">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-3 mb-2 flex-wrap">
+                              <h3 className="font-semibold text-navy">{app.name}</h3>
+                              <span className="bg-red-100 text-teal text-xs font-medium px-2.5 py-0.5 rounded-full">{app.year}</span>
+                              {app.direction && (
+                                <span className="bg-slate-100 text-slate-600 text-xs px-2.5 py-0.5 rounded-full">{app.direction}</span>
+                              )}
+                            </div>
+                            <div className="flex flex-wrap gap-4 text-sm text-slate-600 mb-2">
+                              <a href={`tel:${app.phone}`} className="flex items-center gap-1.5 hover:text-teal">
+                                <Icon name="Phone" size={13} />
+                                {app.phone}
+                              </a>
+                              <a href={`mailto:${app.email}`} className="flex items-center gap-1.5 hover:text-teal">
+                                <Icon name="Mail" size={13} />
+                                {app.email}
+                              </a>
+                            </div>
+                            {app.motivation && (
+                              <p className="text-slate-500 text-sm italic">«{app.motivation}»</p>
+                            )}
+                          </div>
+                          <div className="text-right flex-shrink-0">
+                            <p className="text-xs text-muted-foreground">
+                              {new Date(app.created_at).toLocaleDateString("ru-RU", { day: "numeric", month: "short", year: "numeric" })}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {new Date(app.created_at).toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" })}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* FOOTER */}
       <footer className="bg-navy py-10 px-4">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -941,12 +1156,16 @@ export default function Index() {
                   className="mt-1 resize-none"
                 />
               </div>
+              {submitError && (
+                <p className="text-red-600 text-sm bg-red-50 px-3 py-2 rounded-lg">{submitError}</p>
+              )}
               <button
                 type="submit"
-                className="w-full bg-teal hover:bg-cyan-700 text-white font-semibold py-3 rounded-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+                disabled={submitting}
+                className="w-full bg-teal hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <Icon name="Send" size={18} />
-                Отправить заявку
+                <Icon name={submitting ? "Loader" : "Send"} size={18} className={submitting ? "animate-spin" : ""} />
+                {submitting ? "Отправляем..." : "Отправить заявку"}
               </button>
               <p className="text-xs text-muted-foreground text-center">
                 Мы свяжемся с тобой в течение 2–3 рабочих дней
@@ -954,8 +1173,8 @@ export default function Index() {
             </form>
           ) : (
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-emerald-custom/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icon name="CheckCircle" size={32} className="text-emerald-custom" />
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icon name="CheckCircle" size={32} className="text-teal" />
               </div>
               <h3 className="font-semibold text-navy text-lg mb-2">Заявка отправлена!</h3>
               <p className="text-muted-foreground text-sm">Мы свяжемся с тобой в ближайшее время. Удачи на отборе! 🩺</p>

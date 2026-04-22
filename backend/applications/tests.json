@@ -1,0 +1,23 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST missing fields returns 400",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "", "year": "", "phone": "", "email": ""},
+      "expectedStatus": 400
+    },
+    {
+      "name": "GET forbidden without key returns 403",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 403
+    }
+  ]
+}
